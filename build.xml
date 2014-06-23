@@ -3,16 +3,15 @@
     <target name="prepare">
         <echo msg="Making directory ./build" />
         <mkdir dir="./build" />
+	<echo msg="Download dependencies with Composer..." />
 	<exec command="composer install" dir="./" />
     </target>
-     <target name="phpunit">
-        <echo msg="Runing test" />
-	<phpunit />
+     <target name="phpunit" depends="prepare">
+        <echo msg="Runing tests..." />
+	<phpunit  configuration="./phpunit.xml"/>
     </target>
     <target name="build" depends="phpunit">
         <echo msg="Copying files to build directory..." />
-
-        <echo msg="Copying ./about.php to ./build directory..." />
 	<copy todir="./build/">
 		<fileset dir=".">
 			<include name="**/*.php" />
