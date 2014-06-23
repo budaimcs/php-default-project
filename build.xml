@@ -4,7 +4,7 @@
         <echo msg="Making directory ./build" />
         <mkdir dir="./build" />
 	<echo msg="Download dependencies with Composer..." />
-	<exec command="composer install" dir="./" />
+	<exec command="composer install" dir="./"  passthru="true" checkreturn="true"/>
     </target>
      <target name="phpunit" depends="prepare">
         <echo msg="Runing tests..." />
