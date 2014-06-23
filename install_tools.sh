@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt-get install php5 php-pear php5-xdebug kate;
+apt-get install php5 php-pear php5-xdebug;
 
 #Phing
 pear channel-discover pear.phing.info

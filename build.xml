@@ -12,11 +12,17 @@
     </target>
     <target name="build" depends="phpunit">
         <echo msg="Copying files to build directory..." />
-	<copy todir="./build/">
+	<copy todir="./build/src">
 		<fileset dir=".">
-			<include name="**/*.php" />
+			<include name="src/**/*.php" />
 		</fileset>
 	</copy>
+	<copy file="index.php" tofile="./build/index.php" />
+	<copy dir="./vendor" todir="./build/" />
+    </target>
+    <target name="clean">
+        <echo msg="Deleting files..." />
+	<delete dir="./build" failonerror="true" />
     </target>
     <target name="dist" depends="build">
         <echo msg="Creating archive..." />
@@ -27,5 +33,5 @@
             </fileset>
         </tar>
         <echo msg="Files copied and compressed in build directory OK!" />
-	</target>
+    </target>
 </project>
